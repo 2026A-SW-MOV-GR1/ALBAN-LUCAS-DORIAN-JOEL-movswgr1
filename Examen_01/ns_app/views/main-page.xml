@@ -1,0 +1,45 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="CRUD Dual" flat="true">
+        <NavigationButton visibility="collapsed" />
+        <ActionItem ios.position="right">
+            <StackLayout orientation="horizontal" verticalAlignment="center" p="5">
+                <Label text="🌙" verticalAlignment="center" fontSize="14" marginRight="5"/>
+                <Switch checked="{{ isDarkMode }}" checkedChange="{{ onToggleDarkMode }}" />
+            </StackLayout>
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout rows="auto, auto, *" class="main-container">
+        <!-- Engine Selector -->
+        <StackLayout row="0" class="engine-card">
+            <GridLayout columns="*, auto, *" verticalAlignment="center">
+                <Label col="0" text="NoSQL" textAlignment="right" class="{{ !isSqlMode ? 'engine-active' : 'engine-inactive' }}"/>
+                <Switch col="1" checked="{{ isSqlMode }}" checkedChange="{{ onToggleEngine }}" margin="0 15"/>
+                <Label col="2" text="SQLite" textAlignment="left" class="{{ isSqlMode ? 'engine-active' : 'engine-inactive' }}"/>
+            </GridLayout>
+        </StackLayout>
+
+        <!-- Input Area -->
+        <StackLayout row="1" class="input-container">
+            <GridLayout columns="*, auto, auto" class="input-field">
+                <TextField col="0" hint="{{ isEditing ? 'Editando...' : 'Nuevo elemento...' }}" text="{{ newItemName }}" returnKeyType="done" />
+                <Button col="1" text="✕" tap="onCancelEdit" class="cancel-btn" visibility="{{ isEditing ? 'visible' : 'collapsed' }}" />
+                <Button col="2" text="{{ submitButtonText }}" tap="{{ addItem }}" class="add-btn" />
+            </GridLayout>
+        </StackLayout>
+
+        <!-- List Area -->
+        <ListView row="2" items="{{ items }}" separatorColor="transparent" class="list-container">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto, auto" class="item-card">
+                    <StackLayout col="0" verticalAlignment="center" tap="onEditItem">
+                        <Label text="{{ name }}" class="item-name" />
+                        <Label text="{{ description }}" class="item-desc" />
+                    </StackLayout>
+                    <Button col="1" text="Editar" tap="onEditItem" class="edit-btn-list" />
+                    <Button col="2" text="Eliminar" tap="onDeleteItem" class="delete-btn-list" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>

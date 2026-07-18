@@ -1,0 +1,25 @@
+{
+  "name": "dual-persistence-app",
+  "main": "ns_app/app.ts",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@nativescript/core": "~8.8.0",
+    "nativescript-sqlite": "^2.3.3"
+  },
+  "devDependencies": {
+    "@nativescript/android": "8.8.0",
+    "@nativescript/types": "~8.8.0",
+    "@nativescript/webpack": "~5.0.0",
+    "@types/jasmine": "^6.0.0",
+    "typescript": "~5.4.0",
+    "url": "^0.11.4",
+    "util": "^0.12.5",
+    "path-browserify": "^1.0.1",
+    "os-browserify": "^0.3.0",
+    "stream-browserify": "^3.0.0",
+    "buffer": "^6.0.3",
+    "process": "^0.11.10",
+    "assert": "^2.1.0"
+  }
+}
